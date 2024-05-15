@@ -1,7 +1,6 @@
-`# 3a.CREATION FOR ECHO CLIENT AND ECHO SERVER USING TCP SOCKETS
-# NAME: yogesh.v
-
-# REGISTER NO: 212223230250
+# EX NO 3a.CREATION FOR ECHO CLIENT AND ECHO SERVER USING TCP SOCKETS
+## NAME: V.YOGESH
+## REG NO : 212223230250
 # AIM
 To write a python program for creating Echo Client and Echo Server using TCP
 Sockets Links.
@@ -12,47 +11,29 @@ Sockets Links.
  server .
 4. Send and receive the message using the send function in socket.
 ## PROGRAM
-CLIENT
+## CLIENT
 ```
 import socket
-
-HOST = '127.0.0.1'  
-PORT = 65432        
-
-with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-    s.connect((HOST, PORT))
-    while True:
-        message = input("Enter message to send to server: ")
-        s.sendall(message.encode())
-        data = s.recv(1024)
-        print('Received', repr(data.decode()))
+s=socket.socket()
+s.connect(('localhost',8000))
+while True:
+ msg=input("Client > ")
+ s.send(msg.encode())
+ print("Server > ",s.recv(1024).decode())
 ```
-SERVER
+## SERVER
 ```
 import socket
-
-HOST = '127.0.0.1'  
-PORT = 65432       
-
-with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-    s.bind((HOST, PORT))
-    s.listen()
-    conn, addr = s.accept()
-    with conn:
-        print('Connected by', addr)
-        while True:
-            data = conn.recv(1024)
-            if not data:
-                break
-            conn.sendall(data)
+s=socket.socket()
+s.bind(('localhost',8000))
+s.listen(5)
+c,addr=s.accept()
+while True:
+ ClientMessage=c.recv(1024).decode()
+ c.send(ClientMessage.encode())
 ```
 ## OUPUT
-CLIENT
-![328375958-8e12ef30-b330-46d6-a024-40af188711b0](https://github.com/Yogesh-Yogi-1/3a.Sockets_Creation_for_Echo_Client_and_Echo_Server/assets/148514598/a62028b6-3301-4dc5-a239-d5c0fe242e5b)
-
-
-SERVER
-![328376017-d23b1011-d18a-4adf-bca7-fd4f4ff47315](https://github.com/Yogesh-Yogi-1/3a.Sockets_Creation_for_Echo_Client_and_Echo_Server/assets/148514598/275e41fa-5f7f-4f83-a1ad-bd268b2cb103)
+![Screenshot 2024-05-15 213135](https://github.com/Yogesh-Yogi-1/3a.Sockets_Creation_for_Echo_Client_and_Echo_Server/assets/148514598/464bff02-ef50-46b2-92c2-f9c382a8c621)
 
 ## RESULT
 Thus, the python program for creating Echo Client and Echo Server using TCP Sockets Links `
