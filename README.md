@@ -32,7 +32,7 @@ while True:
  ClientMessage=c.recv(1024).decode()
  c.send(ClientMessage.encode())
 ```
-## OUPUT
+## OUTPUT
 ![Screenshot 2024-05-15 213135](https://github.com/Yogesh-Yogi-1/3a.Sockets_Creation_for_Echo_Client_and_Echo_Server/assets/148514598/464bff02-ef50-46b2-92c2-f9c382a8c621)
 
 ## RESULT
